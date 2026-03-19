@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activate Pro Access</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <style>
+        .checkout-container {
+            width: 500px;
+            background: rgba(0, 26, 51, 0.9);
+            border: 2px solid #004080;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .checkout-header {
+            text-align: center;
+        }
+
+        .checkout-title {
+            font-family: 'FlameInferno', sans-serif;
+            font-size: 2.5rem;
+            color: #ff3300;
+            text-shadow: 0 0 15px #ff0000;
+            margin: 0;
+        }
+
+        .price-display {
+            color: #00d9ff;
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            color: #0080ff;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        input, select {
+            background: #000c1a;
+            border: 1px solid #004080;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: #00d9ff;
+            box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        }
+
+        .row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .row .form-group {
+            flex: 1;
+        }
+
+        .btn-row {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app-wrapper">
+        <div class="fire-bg-layer">
+            <canvas id="fireCanvas"></canvas>
+            <div class="smoke-overlay"></div>
+        </div>
+
+        <div class="content-ui">
+            <div class="checkout-container">
+                <div class="checkout-header">
+                    <h2 class="checkout-title">PRO ACTIVATION</h2>
+                    <div class="price-display">$7.00 / MONTH</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Card Type</label>
+                    <select>
+                        <option value="visa">Visa</option>
+                        <option value="chase">Chase</option>
+                        <option value="amex">American Express</option>
+                        <option value="discover">Discover</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Card Number</label>
+                    <input type="text" placeholder="0000 0000 0000 0000">
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Expiry</label>
+                        <input type="text" placeholder="MM/YY">
+                    </div>
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="text" placeholder="123">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Cardholder Name</label>
+                    <input type="text" placeholder="NAME ON CARD">
+                </div>
+
+                <div class="btn-row">
+                    <button class="menu-btn glow-target active-glow" onclick="alert('Payment Verified! Saving to .config...')">
+                        CONFIRM PAYMENT
+                    </button>
+                    <button class="menu-btn" style="padding: 15px; font-size: 1rem; border-color: #440000; color: #ff3300;" onclick="location.href='paid_plans.html'">
+                        CANCEL
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <svg style="display: none;">
+            <defs>
+                <filter id="heat">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="2" result="noise" />
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" />
+                </filter>
+            </defs>
+        </svg>
+    </div>
+
+    <script src="../styles/flame_atmosphere.js"></script>
+</body>
+</html>
