@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'FlameInferno';
+    src: url('assets/fonts/Flame_Inferno.ttf');
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #020202; 
+    overflow: hidden;
+}
+
+#app-wrapper {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.05s ease;
+}
+
+.fire-bg-layer {
+    position: fixed;
+    bottom: -100px;
+    left: -100px;
+    width: 1400px;
+    height: 1400px;
+    z-index: -1;
+}
+
+.smoke-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 15% 85%, transparent 5%, rgba(0,0,0,0.92) 75%);
+    pointer-events: none;
+}
+
+.content-ui {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    filter: url(#heat);
+}
+
+.fire-text {
+    font-family: 'FireInferno', sans-serif;
+    font-size: 8rem;
+    color: #ff3300;
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px #ff0000;
+}
+
+.menu-btn {
+    font-family: 'FireInferno', sans-serif;
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid #222;
+    color: #444;
+    padding: 18px 50px;
+    margin: 10px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.15s 
+.menu-btn.active-glow {
+    color: #ff9900;
+    border-color: #ff4400;
+    box-shadow: 0 0 25px rgba(255, 68, 0, 0.4);
+    transform: scale(1.02);
+}
