@@ -1,0 +1,26 @@
+body {
+  margin: 0px;
+  font-family: Verdana;
+  color: white;
+}
+#header {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: white;
+  font-family: Verdana;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 100;
+  text-decoration: none;
+  height: 7%;
+}
+.headerLink {
+  color: white;
+  text-decoration: none;
+  font-family: Verdana;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 17pt;
+}
