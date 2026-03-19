@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Activation</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <style>
+        .checkout-container {
+            width: 550px;
+            background: rgba(0, 26, 51, 0.95);
+            border: 3px solid #00d9ff;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .checkout-header {
+            text-align: center;
+            border-bottom: 1px solid #004080;
+            padding-bottom: 20px;
+            margin-bottom: 10px;
+        }
+
+        .checkout-title {
+            font-family: 'FlameInferno', sans-serif;
+            font-size: 2.8rem;
+            color: #ff3300;
+            text-shadow: 0 0 20px #ff0000;
+            margin: 0;
+        }
+
+        .price-display {
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            color: #00d9ff;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        input, select {
+            background: #000814;
+            border: 1px solid #004080;
+            color: white;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #00d9ff;
+            background: #001326;
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .row .form-group {
+            flex: 1;
+        }
+
+        .btn-row {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .enterprise-badge {
+            background: #00d9ff;
+            color: #000;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app-wrapper">
+        <div class="fire-bg-layer">
+            <canvas id="fireCanvas"></canvas>
+            <div class="smoke-overlay"></div>
+        </div>
+
+        <div class="content-ui">
+            <div class="checkout-container">
+                <div class="checkout-header">
+                    <h2 class="checkout-title">ENTERPRISE <span class="enterprise-badge">UNLIMITED</span></h2>
+                    <div class="price-display">$15.00 / MONTH</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Company / Organization Name</label>
+                    <input type="text" placeholder="ENTERPRISE ENTITY NAME">
+                </div>
+
+                <div class="form-group">
+                    <label>Card Type</label>
+                    <select>
+                        <option value="visa">Visa</option>
+                        <option value="chase">Chase</option>
+                        <option value="amex">American Express</option>
+                        <option value="discover">Discover</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Card Number</label>
+                    <input type="text" placeholder="XXXX XXXX XXXX XXXX">
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Expiry Date</label>
+                        <input type="text" placeholder="MM / YY">
+                    </div>
+                    <div class="form-group">
+                        <label>Security Code (CVV)</label>
+                        <input type="text" placeholder="000">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Cardholder Full Name</label>
+                    <input type="text" placeholder="LEGAL NAME ON CARD">
+                </div>
+
+                <div class="btn-row">
+                    <button class="menu-btn glow-target active-glow" onclick="alert('Enterprise Mode Activated!')">
+                        START UNLIMITED ACCESS
+                    </button>
+                    <button class="menu-btn" style="padding: 12px; font-size: 0.9rem; border-color: #330000; color: #ff5555; background: transparent;" onclick="location.href='paid_plans.html'">
+                        RETURN TO SELECTION
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <svg style="display: none;">
+            <defs>
+                <filter id="heat">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="2" result="noise" />
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" />
+                </filter>
+            </defs>
+        </svg>
+    </div>
+
+    <script src="../styles/flame_atmosphere.js"></script>
+</body>
+</html>
