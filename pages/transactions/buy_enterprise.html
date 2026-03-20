@@ -6,72 +6,34 @@
     <title>Enterprise Activation</title>
     <link rel="stylesheet" href="../styles/style.css">
     <style>
-        .checkout-container { width: 550px; background: rgba(0, 26, 51, 0.95); border: 3px solid #00d9ff; box-shadow: 0 0 40px rgba(0, 217, 255, 0.2); border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 18px; }
-        .checkout-header { text-align: center; border-bottom: 1px solid #004080; padding-bottom: 20px; margin-bottom: 10px; }
-        .checkout-title { font-family: 'FlameInferno', sans-serif; font-size: 2.8rem; color: #ff3300; text-shadow: 0 0 20px #ff0000; margin: 0; }
-        .price-display { color: #ffffff; font-size: 1.8rem; margin-top: 10px; letter-spacing: 2px; }
-        .form-group { display: flex; flex-direction: column; gap: 6px; }
-        label { color: #00d9ff; font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: bold; }
-        input, select { background: #000814; border: 1px solid #004080; color: white; padding: 14px; border-radius: 10px; font-size: 1rem; outline: none; transition: all 0.2s ease; }
-        input:focus, select:focus { border-color: #00d9ff; background: #001326; box-shadow: 0 0 15px rgba(0, 217, 255, 0.4); }
-        .row { display: flex; gap: 20px; }
-        .row .form-group { flex: 1; }
-        .btn-row { margin-top: 15px; display: flex; flex-direction: column; gap: 12px; }
-        .enterprise-badge { background: #00d9ff; color: #000; font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; vertical-align: middle; margin-left: 10px; }
+        .checkout-box { width: 450px; background: rgba(0, 5, 10, 0.98); border: 2px solid #ff3300; border-radius: 15px; padding: 40px; text-align: center; box-shadow: 0 0 50px rgba(255, 51, 0, 0.2); }
+        .price-tag { color: #ffffff; font-size: 2.5rem; font-family: 'Orbitron', sans-serif; margin: 10px 0; text-shadow: 0 0 10px #00d9ff; }
     </style>
 </head>
 <body>
     <div id="app-wrapper">
-        <div class="fire-bg-layer">
-            <canvas id="fireCanvas"></canvas>
-            <div class="smoke-overlay"></div>
-        </div>
+        <div class="fire-bg-layer"><canvas id="fireCanvas"></canvas></div>
         <div class="content-ui">
-            <form action="http://127.0.0.1:8000/api/v1/payments/process" method="POST" class="checkout-container">
-                <input type="hidden" name="plan_type" value="enterprise">
-                <div class="checkout-header">
-                    <h2 class="checkout-title">ENTERPRISE <span class="enterprise-badge">UNLIMITED</span></h2>
-                    <div class="price-display">$15.00 / MONTH</div>
+            <div class="checkout-box">
+                <h2 style="font-family:'FlameInferno'; color:#ff3300; font-size:3rem; margin:0;">ENTERPRISE</h2>
+                <div class="price-tag">$15.00</div>
+                <p style="color:#00d9ff; font-weight:bold; letter-spacing:1px;">MAXIMUM ENGINE POWER</p>
+                
+                <div style="display:flex; flex-direction:column; gap:15px; margin-top:30px;">
+                    <button class="menu-btn active-glow" onclick="startPurchase('enterprise')">UNLOCK FULL SYSTEM</button>
+                    <button class="menu-btn" style="border-color:#222; color:gray;" onclick="location.href='../upgrade_plan.html'">BACK</button>
                 </div>
-                <div class="form-group">
-                    <label>Company / Organization Name</label>
-                    <input type="text" name="company_name" required>
-                </div>
-                <div class="form-group">
-                    <label>Card Type</label>
-                    <select name="card_type">
-                        <option value="visa">Visa</option>
-                        <option value="mastercard">Mastercard</option>
-                        <option value="amex">American Express</option>
-                        <option value="discover">Discover</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Card Number</label>
-                    <input type="text" name="card_number" required>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <label>Expiry Date</label>
-                        <input type="text" name="expiry_date" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Security Code (CVV)</label>
-                        <input type="text" name="cvv" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Cardholder Full Name</label>
-                    <input type="text" name="cardholder_name" required>
-                </div>
-                <div class="btn-row">
-                    <button type="submit" class="menu-btn glow-target active-glow">START UNLIMITED ACCESS</button>
-                    <button type="button" class="menu-btn" style="padding: 12px; font-size: 0.9rem; border-color: #330000; color: #ff5555; background: transparent;" onclick="location.href='../upgrade_plan.html'">RETURN TO SELECTION</button>
-                </div>
-            </form>
+            </div>
         </div>
-        <svg style="display: none;"><defs><filter id="heat"><feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="2" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="5" /></filter></defs></svg>
     </div>
+
+    <div id="loading-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; flex-direction:column; justify-content:center; align-items:center;">
+        <div style="width:60px; height:60px; border:4px solid #111; border-top:4px solid #00d9ff; border-radius:50%; animation:spin 0.8s linear infinite;"></div>
+        <h3 style="color:#00d9ff; margin-top:20px; font-family:sans-serif; letter-spacing:3px;">INITIALIZING ENTERPRISE LICENSE...</h3>
+    </div>
+
+    <script src="../../assets/js/payments.js"></script>
     <script src="../styles/flame_atmosphere.js"></script>
+    <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
 </body>
 </html>
